@@ -1,0 +1,12 @@
+Changes
+MANIFEST
+Makefile.PL
+README
+Svgalib.pm
+Svgalib.xs
+constants.c
+test.pl
+typemap
+examples/fastball.pl
+examples/fracfern.pl
+examples/mand2.pl
