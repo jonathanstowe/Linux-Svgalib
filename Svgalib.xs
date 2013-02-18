@@ -50,7 +50,7 @@ char *av2char(AV *av_colors)
 
    no_colors = av_len(av_colors);
        
-   New(1,(void *)_colors,((int)no_colors + 1),char);
+   Newx(_colors,((int)no_colors + 1),char);
 
    if (_colors)
    {
