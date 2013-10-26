@@ -40,10 +40,13 @@ if($vga->setmode(4))
   ok(0);
 }
 
+my $maxcol = $vga->getxdim();
+my $maxrow = $vga->getydim();
+
 for ( 0 ... 10000 )
 {
   $vga->setcolor(int (rand 17));
-  $vga->drawpixel(int( rand 640), int(rand 480));
+  $vga->drawpixel(int( rand $maxcol), int(rand $maxrow));
 }
 
 my $line = [];

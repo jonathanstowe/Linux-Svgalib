@@ -181,10 +181,15 @@ int  y2
 void
 drawpixel(self,x, y)
 SV *self
-int  x
-int  y 
+SV  *x
+SV  *y 
    PPCODE: 
-     vga_drawpixel(x,y); 
+     int i_x;
+     int i_y;
+
+     i_x = (int)SvIV(x);
+     i_y = (int)SvIV(y);
+     vga_drawpixel(i_x,i_y); 
 
 
 void
