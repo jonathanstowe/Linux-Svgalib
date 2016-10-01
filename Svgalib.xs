@@ -1,34 +1,3 @@
-/*
-#*****************************************************************************
-#*                                                                           *
-#*                          Gellyfish Software                               *
-#*                                                                           *
-#*                                                                           *
-#*****************************************************************************
-#*                                                                           *
-#*      PROGRAM     :  Linux::Svgalib                                        *
-#*                                                                           *
-#*      AUTHOR      :  JNS                                                   *
-#*                                                                           *
-#*      DESCRIPTION :  Perl Interface to svgalib graphics functions          *
-#*                                                                           *
-#*                                                                           *
-#*****************************************************************************
-#*                                                                           *
-#*      $Log: Svgalib.xs,v $
-#*      Revision 1.2  2004/03/02 20:28:05  jonathan
-#*      Put back in CVS
-#*
-#*      Revision 1.2  2001/04/11 08:26:59  gellyfish
-#*      Check in prior to alpha release
-#*
-#*      Revision 1.1  2001/04/09 06:18:26  gellyfish
-#*      Initial revision
-#*
-#*                                                                           *
-#*                                                                           *
-#*****************************************************************************
-*/
 
 #include "EXTERN.h"
 #include "perl.h"
