@@ -1,14 +1,7 @@
-# Before `make install' is performed this script should be runnable with
-# `make test'. After `make install' it should work as `perl test.pl'
+use Test::More tests => 5;;
 
-#########################
-
-# change 'tests => 1' to 'tests => last_test_to_print';
-
-use Test;
-BEGIN { plan tests => 1 };
 use Linux::Svgalib ':all';
-ok(1); # If we made it this far, we're ok.
+pass "manage to import";
 
 eval 
 {
@@ -16,47 +9,48 @@ eval
 };
 if ( $@ )
 {
-  ok(0);
+  fail "can get a constant";
 }
 else
 {
-  ok(1);
+  pass "can get a constant";
 }
 
 my $vga = Linux::Svgalib->new();
 
-$vga->disabledriverreport();
+isa_ok $vga, 'Linux::Svgalib', "got the new object";
 
-if($vga->init())
-{
-  ok(2);
+eval {
+    $vga->disabledriverreport();
+};
+if ( $@ ) {
+    fail "disabledriverreport";
 }
-else
-{
-  ok(0);
-}
-if($vga->setmode(4))
-{
-  ok(0);
+else {
+    pass "disabledriverreport";
 }
 
-my $maxcol = $vga->getxdim();
-my $maxrow = $vga->getydim();
-
-for ( 0 ... 10000 )
+SKIP:
 {
-  $vga->setcolor(int (rand 17));
-  $vga->drawpixel(int( rand $maxcol), int(rand $maxrow));
+    skip "can only run as root", 1 if $<;
+    ok $vga->init(), "init";
+    ok $vga->setmode(4), "setmode";
+
+    my $maxcol = $vga->getxdim();
+    my $maxrow = $vga->getydim();
+
+    for ( 0 ... 10000 ) {
+        $vga->setcolor(int (rand 17));
+        $vga->drawpixel(int( rand $maxcol), int(rand $maxrow));
+    }
+
+    my $line = [];
+    $vga->setmode(8);
+
+    for ( 1 .. 480 ) {
+        @{$line} = ( 1 .. 255 );
+        $vga->drawscanline($_,$line);
+    }
+
+    $vga->setmode(TEXT);
 }
-
-my $line = [];
-$vga->setmode(8);
-
-for ( 1 .. 480 )
-{
-  @{$line} = ( 1 .. 255 );
-  $vga->drawscanline($_,$line);
-}
-
-$vga->getch();
-$vga->setmode(TEXT);
