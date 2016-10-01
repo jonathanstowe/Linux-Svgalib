@@ -1,15 +1,13 @@
 use ExtUtils::MakeMaker;
 
 WriteMakefile(
-    'NAME'		=> 'Linux::Svgalib',
-    'VERSION_FROM'	=> 'Svgalib.pm',
+    'NAME'		    => 'Linux::Svgalib',
+    'VERSION_FROM'	=> 'lib/Linux/Svgalib.pm',
     'PREREQ_PM'		=> {},
-    ($] >= 5.005 ?   
-      (ABSTRACT_FROM => 'Svgalib.pm',
-       AUTHOR     => 'Jonathan Stowe <jns@gellyfish.com>') : ()),
-    'LIBS'		=> ['-lvga'],
+    'AUTHOR'        => ['Jonathan Stowe <jns@gellyfish.co.uk>'],
+    'LIBS'		    => ['-lvga'],
     'DEFINE'		=> '',
-    'INC'		=> '', 
-     'OBJECT'		=> '$(O_FILES)',
-     'XSPROTOARG'       => '-noprototypes',
+    'INC'		    => '', 
+    'OBJECT'		=> '$(O_FILES)',
+    'XSPROTOARG'    => '-noprototypes',
 );

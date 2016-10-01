@@ -2,10 +2,10 @@ Changes
 MANIFEST
 Makefile.PL
 README
-Svgalib.pm
+lib/Linux/Svgalib.pm
 Svgalib.xs
 constants.c
-test.pl
+t/03-svgalib.t
 typemap
 examples/fastball.pl
 examples/fracfern.pl
