@@ -1,53 +1,18 @@
-#*****************************************************************************
-#*                                                                           *
-#*                          Gellyfish Software                               *
-#*                                                                           *
-#*                                                                           *
-#*****************************************************************************
-#*                                                                           *
-#*      PROGRAM     :  Linux::Svgalib                                        *
-#*                                                                           *
-#*      AUTHOR      :  JNS                                                   *
-#*                                                                           *
-#*      DESCRIPTION :  Perl interface to Svgalib graphics                    *
-#*                                                                           *
-#*                                                                           *
-#*****************************************************************************
-#*                                                                           *
-#*      $Log: Svgalib.pm,v $
-#*      Revision 1.2  2004/03/02 20:28:05  jonathan
-#*      Put back in CVS
-#*
-#*      Revision 1.2  2001/04/11 08:26:59  gellyfish
-#*      Check in prior to alpha release
-#*
-#*      Revision 1.1  2001/02/15 08:22:32  gellyfish
-#*      Initial revision
-#*
-#*                                                                           *
-#*                                                                           *
-#*****************************************************************************
-
 package Linux::Svgalib;
 
 use strict;
+use warnings;
+
 use Carp;
 
 require Exporter;
 require DynaLoader;
 
-use vars qw(
-            $AUTOLOAD
-            $VERSION
-            @ISA
-            %EXPORT_TAGS
-            @EXPORT
-            @EXPORT_OK
-           ); 
+use base 'Exporter';
+use base 'DynaLoader';
 
-@ISA = qw(Exporter DynaLoader);
 
-%EXPORT_TAGS = ( 'all' => [ qw(
+our %EXPORT_TAGS = ( 'all' => [ qw(
 	ACCELFLAG_DRAWHLINELIST
 	ACCELFLAG_DRAWLINE
 	ACCELFLAG_FILLBOX
@@ -303,14 +268,13 @@ use vars qw(
 	VGA_EXT_RESET
 	VGA_EXT_SET
 	VGA_GOTOBACK
-	VGA_H
 	VGA_KEYEVENT
 	VGA_MOUSEEVENT
 ) ] );
 
-@EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
+our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
-@EXPORT = qw(
+our @EXPORT = qw(
 	ACCELFLAG_DRAWHLINELIST
 	ACCELFLAG_DRAWLINE
 	ACCELFLAG_FILLBOX
@@ -567,13 +531,12 @@ use vars qw(
 	VGA_EXT_RESET
 	VGA_EXT_SET
 	VGA_GOTOBACK
-	VGA_H
 	VGA_KEYEVENT
 	VGA_MOUSEEVENT
 	__GLASTMODE
 );
 
-($VERSION) = q$Revision: 1.2 $ =~ /([\d.]+)/;
+our $VERSION = '1.3';
 
 sub new
 {
@@ -587,6 +550,8 @@ sub new
 
    return $self;
 }
+
+our $AUTOLOAD;
 
 sub AUTOLOAD 
 {
@@ -613,12 +578,11 @@ bootstrap Linux::Svgalib $VERSION;
 package Linux::Svgalib::Modeinfo;
 
 use strict;
+use warnings;
 
 use Carp;
 
-use vars qw(
-             $AUTOLOAD
-           );
+our $AUTOLOAD;
 
 sub AUTOLOAD
 {
@@ -1189,7 +1153,7 @@ Graphics modes :
 
 =head1 AUTHOR
 
-Jonathan Stowe , E<lt>jns@gellyfish.comE<gt>
+Jonathan Stowe , E<lt>jns@gellyfish.co.ukE<gt>
 
 =head1 SEE ALSO
 
