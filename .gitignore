@@ -4,3 +4,4 @@ MYMETA.*
 *.o
 Svgalib.c
 Makefile
+*.bs
