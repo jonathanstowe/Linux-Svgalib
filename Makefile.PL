@@ -6,6 +6,7 @@ WriteMakefile(
     'PREREQ_PM'		=> {},
     'AUTHOR'        => ['Jonathan Stowe <jns@gellyfish.co.uk>'],
     'LIBS'		    => ['-lvga'],
+    'CCFLAGS'       => '-Wno-unused-label',
     'DEFINE'		=> '',
     'INC'		    => '', 
     'OBJECT'		=> '$(O_FILES)',

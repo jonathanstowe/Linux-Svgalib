@@ -37,13 +37,6 @@
 /*  This stuff is just so ugly I had to put it in a separate file */
 
   
-static int
-not_here(char *s)
-{
-    croak("%s not implemented on this architecture", s);
-    return -1;
-}
-
 static double
 constant_ACCELFLAG_PO(char *name, int len, int arg)
 {
@@ -4295,7 +4288,7 @@ constant_VGA_(char *name, int len, int arg)
     case 'H':
 	if (strEQ(name + 4, "H")) {	/* VGA_ removed */
 #ifdef VGA_H
-	    return VGA_H;
+	    return 1;
 #else
 	    goto not_there;
 #endif
